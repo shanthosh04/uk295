@@ -1,8 +1,7 @@
-package ch.csbe.backendlb.Product;
+package ch.csbe.backendlb.Category;
 
 
-import ch.csbe.backendlb.Entities.Category;
-import ch.csbe.backendlb.Entities.Product;
+import ch.csbe.backendlb.Product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,6 @@
-package ch.csbe.backendlb.Product;
+package ch.csbe.backendlb.User;
 
-import ch.csbe.backendlb.Entities.Product;
-import ch.csbe.backendlb.Entities.User;
+import ch.csbe.backendlb.Product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

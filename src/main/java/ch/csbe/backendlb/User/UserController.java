@@ -1,13 +1,14 @@
-package ch.csbe.backendlb.Controllers;
+package ch.csbe.backendlb.User;
 
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sign")
-public class User {
+public class UserController {
 
     @PostMapping("/authenticate")
     public String authenticate() {
@@ -25,5 +26,10 @@ public class User {
     public String distributeUserRights() {
 
         return "Benutzerrechte erfolgreich verteilt";
+    }
+
+    @DeleteMapping("/")
+    public String deleteUser() {
+        return "Brnutzerrechte erfolgreich löschen";
     }
 }

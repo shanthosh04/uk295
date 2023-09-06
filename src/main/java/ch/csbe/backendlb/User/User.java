@@ -1,4 +1,4 @@
-package ch.csbe.backendlb.Entities;
+package ch.csbe.backendlb.User;
 
 import jakarta.persistence.*;
 
