@@ -2,8 +2,12 @@ package ch.csbe.backendlb.Product;
 
 import ch.csbe.backendlb.Category.Category;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Product {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
