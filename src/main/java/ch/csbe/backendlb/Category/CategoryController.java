@@ -1,33 +1,44 @@
 package ch.csbe.backendlb.Category;
 
 import ch.csbe.backendlb.Product.ProductController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/productcategory")
 public class CategoryController {
 
-    @PostMapping("/{id}")
-    public String addProductCategory(@RequestBody ProductController productControllerCategory) {
+    @Autowired
+    CategoryService categoryService;
 
-        return "Produktkategorie erfolgreich hinzugefügt";
+    @PostMapping("")
+    public Category createCategory(@RequestBody Category category) {
+
+        return categoryService.create(category);
     }
 
     @PutMapping("/{id}")
-    public String editProductCategory(@RequestBody ProductController productControllerCategory) {
+    public Category editProductCategory(@PathVariable Long id, @RequestBody Category category) {
 
-        return "Produktkategorie erfolgreich bearbeitet";
+        return categoryService.update(id, category);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteProductCategory(@PathVariable ProductController productControllerCategory) {
+    public void deleteProductCategory(@PathVariable Long id) {
 
-        return "Produktkategorie erfolgreich gelöscht";
+        categoryService.deleteById(id);
     }
 
     @GetMapping("/{id}")
-    public String getProductCategory(@PathVariable ProductController productControllerCategory) {
+    public Category getById(@PathVariable Long id) {
+        return categoryService.getById(id);
+    }
 
-        return "Alle ProduktKategorie erfolgreich eingesehen";
+    @GetMapping("/")
+    public List<Category> getCategorys() {
+
+        return categoryService.get();
     }
 }
