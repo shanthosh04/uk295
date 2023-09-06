@@ -37,12 +37,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public String listProduct(@PathVariable Long id) {
-        return "Pordukt erfolgreich aufgelistet.";
+    public Product getProductbyId(@PathVariable Long id) {
+        return productService.getById(id);
     }
 
     @DeleteMapping("/id")
-    public  String deleteProduct(@PathVariable Long id) {
-        return "Produkt erfolgreich gelöscht.";
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
     }
 }
