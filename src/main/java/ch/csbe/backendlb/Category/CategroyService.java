@@ -10,9 +10,9 @@ import java.util.Optional;
 @Service
 public class CategroyService {
 
-    private final ProductRepository productRepository;
+    private final CategoryRepository productRepository;
 
-    public CategroyService(ProductRepository productRepository) {
+    public CategroyService(CategoryRepository roductRepository) {
         this.productRepository = productRepository;
     }
 
