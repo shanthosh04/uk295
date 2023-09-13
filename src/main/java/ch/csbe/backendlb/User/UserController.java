@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "UserController", description = "Hier finden sich alle Endpoints für Benutzer")
 public class UserController {
 
+
     @PostMapping("/authenticate")
     @Operation(
             operationId = "AuthenticateUser",

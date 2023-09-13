@@ -1,6 +1,8 @@
 package ch.csbe.backendlb.Category;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +40,7 @@ public class CategoryService {
             existingCategory.setName(updatedCategory.getName());
             return categoryRepository.save(existingCategory);
         }
-        return new Category();
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produkt mit der id " + id + " wurde nicht gefunden.");
     }
 
     public void deleteById(Long id) {
