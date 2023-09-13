@@ -14,6 +14,7 @@ public class UserController {
 
     @PostMapping("/authenticate")
     @Operation(
+            operationId = "AuthenticateUser",
             summary = "Authentifizierung",
             description = "Dieser Endpunkt ermöglicht die Authentifizierung des Benutzers."
     )
@@ -23,6 +24,7 @@ public class UserController {
 
     @PostMapping("/register")
     @Operation(
+            operationId = "RegisterUser",
             summary = "Registrierung",
             description = "Dieser Endpunkt ermöglicht die Registrierung eines neuen Benutzers."
     )
@@ -32,6 +34,7 @@ public class UserController {
 
     @PostMapping("/")
     @Operation(
+            operationId = "DistributeUser",
             summary = "Benutzerrechte verteilen",
             description = "Dieser Endpunkt ermöglicht die Verteilung von Benutzerrechten."
     )
@@ -41,6 +44,7 @@ public class UserController {
 
     @DeleteMapping("/")
     @Operation(
+            operationId = "DeleteUser",
             summary = "Benutzer löschen",
             description = "Dieser Endpunkt ermöglicht das Löschen eines Benutzers."
     )

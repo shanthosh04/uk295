@@ -20,8 +20,8 @@ public class ProductController {
 
     @PostMapping("/")
     @Operation(
+            operationId = "AddProduct",
             summary = "Produkt erstellen",
-            operationId = "addProduct",
             description = "Dieser Endpunkt ermöglicht das Erstellen eines neuen Produkts."
     )
     public String addProduct(@RequestBody ProductController productController) {
@@ -30,8 +30,8 @@ public class ProductController {
 
     @GetMapping
     @Operation(
+            operationId = "GetProducts",
             summary = "Alle Produkte auflisten",
-            operationId = "getProducts",
             description = "Dieser Endpunkt listet alle vorhandenen Produkte auf."
     )
     public List<Product> getProducts() {
@@ -40,8 +40,8 @@ public class ProductController {
 
     @PostMapping
     @Operation(
+            operationId = "CreateProduct",
             summary = "Produkt erstellen",
-            operationId = "createProduct",
             description = "Dieser Endpunkt ermöglicht das Erstellen eines neuen Produkts."
     )
     public Product createProduct(
@@ -53,8 +53,8 @@ public class ProductController {
 
     @PutMapping("/{id}")
     @Operation(
-            summary = "Produkt aktualisieren",
             operationId = "updateProduct",
+            summary = "Produkt aktualisieren",
             description = "Dieser Endpunkt ermöglicht die Aktualisierung eines vorhandenen Produkts."
     )
     public Product updateProduct(
@@ -65,8 +65,8 @@ public class ProductController {
 
     @GetMapping("/{id}")
     @Operation(
+            operationId = "GetProductById",
             summary = "Produkt nach ID abrufen",
-            operationId = "getProductById",
             description = "Dieser Endpunkt ermöglicht das Abrufen eines Produkts anhand seiner ID."
     )
     public Product getProductbyId(@PathVariable Long id) {
@@ -75,8 +75,8 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     @Operation(
+            operationId = "DeleteProduct",
             summary = "Produkt löschen",
-            operationId = "deleteProduct",
             description = "Dieser Endpunkt ermöglicht das Löschen eines Produkts anhand seiner ID."
     )
     public void deleteProduct(
