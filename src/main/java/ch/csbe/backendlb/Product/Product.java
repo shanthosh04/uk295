@@ -1,13 +1,16 @@
 package ch.csbe.backendlb.Product;
 
 import ch.csbe.backendlb.Category.Category;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Schema
 @Getter
 @Setter
+
 public class Product {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
