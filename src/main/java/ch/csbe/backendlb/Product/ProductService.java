@@ -1,6 +1,9 @@
 package ch.csbe.backendlb.Product;
 
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +26,7 @@ public class ProductService {
         if (productOptional.isPresent()) {
             return productOptional.get();
         }
-        return new Product();
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produkt mit der id " + id + " wurde nicht gefunden.");
     }
 
     public Product create(Product product) {
