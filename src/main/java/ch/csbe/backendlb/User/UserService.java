@@ -1,6 +1,8 @@
 package ch.csbe.backendlb.User;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,8 +35,7 @@ public class UserService {
             existingUser.setId(user.getId());
             return userRepository.save(existingUser);
         }
-        return null;
-    }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User mit der id " + id + " wurde nicht gefunden.");    }
 
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);

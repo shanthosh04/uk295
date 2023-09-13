@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Data
 @Schema (
-        description = "Einzigartige Identifikationsnummer der ToDo-Liste",
+        description = "Identifikationsnummer der User",
         example = "1"
 )
 public class User {

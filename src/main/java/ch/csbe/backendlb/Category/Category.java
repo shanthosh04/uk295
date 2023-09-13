@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Schema (
-        description = "Einzigartige Identifikationsnummer der ToDo-Liste",
+        description = "Identifikationsnummer der Category",
         example = "1"
 )
 public class Category {

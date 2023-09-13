@@ -1,17 +1,19 @@
 package ch.csbe.backendlb.User;
 
+import ch.csbe.backendlb.Product.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sign")
 @Tag(name = "UserController", description = "Hier finden sich alle Endpoints für Benutzer")
 public class UserController {
 
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/authenticate")
     @Operation(

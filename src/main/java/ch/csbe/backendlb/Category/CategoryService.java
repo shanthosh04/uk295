@@ -40,7 +40,7 @@ public class CategoryService {
             existingCategory.setName(updatedCategory.getName());
             return categoryRepository.save(existingCategory);
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produkt mit der id " + id + " wurde nicht gefunden.");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category mit der id " + id + " wurde nicht gefunden.");
     }
 
     public void deleteById(Long id) {

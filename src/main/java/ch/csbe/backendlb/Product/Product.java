@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Schema (
-        description = "Einzigartige Identifikationsnummer der ToDo-Liste",
+        description = "Identifikationsnummer der Product",
         example = "1"
 )
 public class Product {
