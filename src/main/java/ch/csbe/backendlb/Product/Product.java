@@ -7,10 +7,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Schema
 @Getter
 @Setter
-
+@Schema (
+        description = "Einzigartige Identifikationsnummer der ToDo-Liste",
+        example = "1"
+)
 public class Product {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)

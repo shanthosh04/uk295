@@ -12,6 +12,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.lastname = ?1")
     Product findProductByType(String lastname);
+
+    User findUserByEmail(String email);
+
     public interface ProductRepository extends JpaRepository<Product, Long> {
         List<Product> findProductsById(Long id);
 

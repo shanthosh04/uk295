@@ -1,10 +1,17 @@
 package ch.csbe.backendlb.User;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
 @Entity
+@Data
+@Schema (
+        description = "Einzigartige Identifikationsnummer der ToDo-Liste",
+        example = "1"
+)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,4 +37,5 @@ public class User {
 
     @Column (columnDefinition = "varchar(200)")
     private String password;
+
 }
