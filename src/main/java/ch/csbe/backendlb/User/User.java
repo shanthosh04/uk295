@@ -38,4 +38,7 @@ public class User {
     @Column (columnDefinition = "varchar(200)")
     private String password;
 
+    @Column (columnDefinition = "varchar(200)")
+    private String username;
+
 }
