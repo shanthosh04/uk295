@@ -2,7 +2,6 @@ package ch.csbe.backendlb.User.login;
 
 import ch.csbe.backendlb.User.User;
 import ch.csbe.backendlb.User.UserService;
-import ch.csbe.backendlb.User.login.
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,9 +14,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
+@Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    @Component
+
     @Autowired
     private UserService userService;
 
