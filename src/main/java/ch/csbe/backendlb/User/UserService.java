@@ -1,5 +1,8 @@
 package ch.csbe.backendlb.User;
 
+import ch.csbe.backendlb.User.DTO.UserCreateDto;
+import ch.csbe.backendlb.User.DTO.UserDetailDto;
+import ch.csbe.backendlb.User.DTO.UserMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -54,5 +57,21 @@ public class UserService {
     }
 
     public void distributeUserRights(int userId, List<String> userRights) {
+    }
+
+    public List<User> get() {
+        return userRepository.findAll();
+    }
+
+    public UserDetailDto getById(Long id) {
+
+        User user = this.userRepository.getById(id);
+        UserDetailDto userDetailDto = UserMapper.DetailDto(user);
+
+        return userDetailDto;
+    }
+
+    public UserDetailDto create(UserCreateDto user) {
+        return UserMapper.DetailDto(userRepository.save(UserMapper.user(user))) ;
     }
 }

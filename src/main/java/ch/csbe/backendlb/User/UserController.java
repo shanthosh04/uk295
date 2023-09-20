@@ -1,6 +1,7 @@
 package ch.csbe.backendlb.User;
 
 import ch.csbe.backendlb.Product.ProductService;
+import ch.csbe.backendlb.User.DTO.UserMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
+
+    @Autowired
+    UserMapper userMapper;
 
     @PostMapping("/authenticate")
     @Operation(

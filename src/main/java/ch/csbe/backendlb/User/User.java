@@ -23,6 +23,9 @@ public class User {
     @Column (columnDefinition = "varchar(255)")
     private String lastname;
 
+    @Column (columnDefinition = "varchar(200)")
+    private String username;
+
     @Column (columnDefinition = "varchar(255)")
     private String adress;
 
@@ -30,7 +33,7 @@ public class User {
     private String city;
 
     @Column (columnDefinition = "DATE")
-    private Date Birthdate;
+    private Date birthdate;
 
     @Column (columnDefinition = "varchar(1000)")
     private String Email;
@@ -39,6 +42,5 @@ public class User {
     private String password;
 
     @Column (columnDefinition = "varchar(200)")
-    private String username;
-
+    private String authenticated;
 }

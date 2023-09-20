@@ -1,4 +1,4 @@
 package ch.csbe.backendlb.Product.DTO;
 
-public class ProductDeleteDto {
+public class ProductMapper {
 }

@@ -30,7 +30,13 @@ public class UserShowDto {
     public String password;
     @NotNull
     @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date birthday;
+    public Date birthdate;
+    @NotNull
+    @Schema(description = "Geburtstag(Alter) des Benutzers")
+    public Date adress;
+    @NotNull
+    @Schema(description = "Geburtstag(Alter) des Benutzers")
+    public Date city;
     @NotNull
     @Schema(description = "Status ob der Benutzer Authentifizirt ist")
     public Boolean authenticated;

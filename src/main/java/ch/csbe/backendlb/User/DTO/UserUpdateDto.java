@@ -15,39 +15,34 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "DTO für das Aktualisieren eines Benutzers")
 public class UserUpdateDto {
     @NotNull
-    @Schema(description = "Einzigartige Identifikationsnummer des Benutzers")
-    private Long id;
-
+    @Schema(description = "Einmaliege Id des Benutzers")
+    public Long id;
     @NotNull
-    @Schema(description = "Benutzername")
-    private String username;
-
+    @Schema(description = "Vorname des Benutzers")
+    public String firstName;
     @NotNull
-    @Schema(description = "Passwort")
-    private String password;
-
-    @Schema(description = "Nachname")
-    private String surname;
-
-    @Schema(description = "Vorname")
-    private String lastname;
-
-    @Schema(description = "E-Mail-Adresse")
-    private String email;
-
-    @Schema(description = "Geburtstag")
-    private Date birthday;
-
-    @Schema(description = "Straßenname")
-    private String streetName;
-
-    @Schema(description = "Hausnummer")
-    private String streetNr;
-
-    @Schema(description = "Postleitzahl")
-    private String zipCode;
-
-    @Schema(description = "Stadt")
-    private String city;
+    @Schema(description = "Nachname des Benutzers")
+    public  String lastName;
+    @NotNull
+    @Schema(description = "Benutzername des Benutzers")
+    public String username;
+    @NotNull
+    @Schema(description = "E-Mail des Benutzers")
+    public String email;
+    @NotNull
+    @Schema(description = "Password des Benutzers")
+    public String password;
+    @NotNull
+    @Schema(description = "Geburtstag(Alter) des Benutzers")
+    public Date birthdate;
+    @NotNull
+    @Schema(description = "Geburtstag(Alter) des Benutzers")
+    public Date adress;
+    @NotNull
+    @Schema(description = "Geburtstag(Alter) des Benutzers")
+    public Date city;
+    @NotNull
+    @Schema(description = "Status ob der Benutzer Authentifizirt ist")
+    public Boolean authenticated;
 }
 
