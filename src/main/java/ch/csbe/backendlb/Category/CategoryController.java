@@ -1,5 +1,6 @@
 package ch.csbe.backendlb.Category;
 
+import ch.csbe.backendlb.Category.DTO.CategoryDetailDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class CategoryController {
             summary = "Kategorie bearbeiten",
             description = "Dieser Endpunkt ermöglicht das Bearbeiten einer Produktkategorie."
     )
-    public Category editProductCategory(@PathVariable Long id, @RequestBody Category category) {
-        return categoryService.update(id, category);
+    public CategoryDetailDto editProductCategory(@PathVariable Long id, @RequestBody Category category) {
+        return categoryService.update(id);
     }
 
     @DeleteMapping("/{id}")
@@ -51,7 +52,7 @@ public class CategoryController {
             summary = "Kategorie nach ID abrufen",
             description = "Dieser Endpunkt ermöglicht das Abrufen einer Produktkategorie anhand ihrer ID."
     )
-    public Category getById(@PathVariable Long id) {
+    public CategoryDetailDto getById(@PathVariable Long id) {
         return categoryService.getById(id);
     }
 
@@ -61,7 +62,7 @@ public class CategoryController {
             summary = "Alle Kategorien auflisten",
             description = "Dieser Endpunkt listet alle vorhandenen Produktkategorien auf."
     )
-    public List<Category> getCategorys() {
+    public List<CategoryDetailDto> getCategorys() {
         return categoryService.get();
     }
 }

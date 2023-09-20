@@ -16,27 +16,28 @@ import lombok.Setter;
 public class Product {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(columnDefinition = ("int"),nullable = false)
         private Long id;
 
-        @Column(columnDefinition = "varchar(100)")
+        @Column(columnDefinition = "varchar(100)", nullable = false)
         private String sku;
 
-        @Column(columnDefinition = "TINYINT")
+        @Column(columnDefinition = "TINYINT", nullable = false)
         private Integer active;
 
-        @Column(columnDefinition = "varchar(500)")
+        @Column(columnDefinition = "varchar(500)", nullable = false)
         private String productName;
 
-        @Column(columnDefinition = "varchar(1000)")
+        @Column(columnDefinition = "varchar(1000)", nullable = false)
         private String image;
 
-        @Column(columnDefinition = "MEDIUMTEXT")
+        @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
         private String description;
 
-        @Column(columnDefinition = "FLOAT")
+        @Column(columnDefinition = "FLOAT", nullable = false)
         private Float price;
 
-        @Column(columnDefinition = "INT")
+        @Column(columnDefinition = "INT", nullable = false)
         private Integer stock;
 
         @ManyToOne

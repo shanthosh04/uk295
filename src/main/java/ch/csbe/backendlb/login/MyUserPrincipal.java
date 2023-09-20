@@ -1,4 +1,4 @@
-package ch.csbe.backendlb.User.login;
+package ch.csbe.backendlb.login;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

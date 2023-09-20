@@ -1,77 +1,37 @@
 package ch.csbe.backendlb.User;
 
-import ch.csbe.backendlb.User.DTO.UserCreateDto;
-import ch.csbe.backendlb.User.DTO.UserDetailDto;
-import ch.csbe.backendlb.User.DTO.UserMapper;
+
+import ch.csbe.backendlb.User.login.LoginRequestDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // Importiere die Klasse für die Passwortverschlüsselung
 
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder; // Initialisiere die Passwortverschlüsselung
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder(); // Initialisiere die Passwortverschlüsselung
+    }
+
+    // ...
+
+    public User getUserWithCredentials(LoginRequestDto loginRequestDto) {
+        User user = findUserByEmail(loginRequestDto.getEmail()); if (user != null) {
+            boolean isPasswordMatch = passwordEncoder.matches(loginRequestDto.getPassword(), user.getPassword());
+            if (isPasswordMatch) {
+                return user;
+            }
+        }
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Ungültige Anmeldeinformationen.");
     }
 
     public User findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email);
-    }
-
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    public User create(User user) {
-        return userRepository.save(user);
-    }
-
-    public User update(Long id, User user) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (userOptional.isPresent()) {
-            User existingUser = userOptional.get();
-            existingUser.setId(user.getId());
-            return userRepository.save(existingUser);
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User mit der id " + id + " wurde nicht gefunden.");    }
-
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
-
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    public boolean authenticateUser(String email, String password) {
-        return false;
-    }
-
-    public User registerUser(User user) {
         return null;
-    }
-
-    public void distributeUserRights(int userId, List<String> userRights) {
-    }
-
-    public List<User> get() {
-        return userRepository.findAll();
-    }
-
-    public UserDetailDto getById(Long id) {
-
-        User user = this.userRepository.getById(id);
-        UserDetailDto userDetailDto = UserMapper.DetailDto(user);
-
-        return userDetailDto;
-    }
-
-    public UserDetailDto create(UserCreateDto user) {
-        return UserMapper.DetailDto(userRepository.save(UserMapper.user(user))) ;
     }
 }

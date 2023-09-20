@@ -1,51 +1,56 @@
 package ch.csbe.backendlb.Category;
 
-import org.springframework.http.HttpStatus;
+import ch.csbe.backendlb.Category.DTO.CategoryCreateDto;
+import ch.csbe.backendlb.Category.DTO.CategoryDetailDto;
+import ch.csbe.backendlb.Category.DTO.CategoryMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
 
-    private final CategoryRepository categoryRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
+    @Autowired
+    CategoryMapper categoryMapper;
 
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
+
+    public List<CategoryDetailDto> get() {
+
+        return categoryRepository.findAll().stream().map(categoryMapper::toDetailDto).collect(Collectors.toList());
     }
 
-    public List<Category> get() {
-        return categoryRepository.findAll();
+    public CategoryDetailDto getById(Long id) {
+        Category category = this.categoryRepository.getById(id);
+
+        CategoryDetailDto categoryDetailDto = categoryMapper.toDetailDto(category);
+        return categoryDetailDto;
     }
 
-    public Category getById(Long id) {
-        Optional<Category> productOptional = categoryRepository.findById(id);
-        if (productOptional.isPresent()) {
-            return productOptional.get();
-        }
-        return new Category();
+    public CategoryDetailDto create(CategoryCreateDto category) {
+        return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category))) ;
     }
 
-    public Category create(Category category) {
-        return categoryRepository.save(category);
-    }
-
-
-    public Category update(Long id, Category updatedCategory) {
+    public CategoryDetailDto update(Long id) {
         Optional<Category> categoryOptional = categoryRepository.findById(id);
         if (categoryOptional.isPresent()) {
             Category existingCategory = categoryOptional.get();
-            existingCategory.setName(updatedCategory.getName());
-            return categoryRepository.save(existingCategory);
+            existingCategory.setName(category.getName());
+            existingCategory.setActive(Integer.parseInt(category.getActive()));
+            return categoryMapper.toDetailDto(categoryRepository.save(existingCategory));
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category mit der id " + id + " wurde nicht gefunden.");
+        return new CategoryDetailDto();
     }
 
     public void deleteById(Long id) {
-        if (categoryRepository.existsById(id)) {
-            categoryRepository.deleteById(id);
-        }
+        categoryRepository.deleteById(id);
+
+
     }
 }
+
+
