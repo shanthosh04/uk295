@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         @Query("SELECT p FROM Product  p WHERE p.id= ?1")
         Product findProductById(Long id);
 
-        @Query("UPDATE Product p SET p.name = ?2 WHERE p.id = ?1")
+        @Query("UPDATE Product p SET p.productName = ?2 WHERE p.id = ?1")
         @Modifying
         void updateProductNameById(Long id, String newName);
 

@@ -1,7 +1,7 @@
-package ch.csbe.backendlb.login;
+package ch.csbe.backendlb.User.login;
 
+import ch.csbe.backendlb.User.User;
 import ch.csbe.backendlb.User.UserService;
-import ch.csbe.backendlb.resources.user.UserEntitie;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.util.Date;
 @Service
 public class TokenService {
     // PLEASE USE A MORE SECURE KEY :-)
-    private final String SECRET_KEY = "yourMoreSecretKey";
-    public String generateToken(UserService user) {
+    private final String SECRET_KEY = "yourSecretKey";
+    public String generateToken(User user) {
         return Jwts.builder()
-                .setSubject(user.getmail())
+                .setSubject(user.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)

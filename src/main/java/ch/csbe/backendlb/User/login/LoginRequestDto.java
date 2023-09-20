@@ -1,4 +1,4 @@
-package ch.csbe.backendlb.login;
+package ch.csbe.backendlb.User.login;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

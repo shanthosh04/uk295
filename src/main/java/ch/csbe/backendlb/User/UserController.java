@@ -2,6 +2,9 @@ package ch.csbe.backendlb.User;
 
 import ch.csbe.backendlb.Product.ProductService;
 import ch.csbe.backendlb.User.DTO.UserMapper;
+import ch.csbe.backendlb.User.login.LoginRequestDto;
+import ch.csbe.backendlb.User.login.TokenService;
+import ch.csbe.backendlb.User.login.TokenWrapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,8 +20,22 @@ public class UserController {
     UserService userService;
 
     @Autowired
-    UserMapper userMapper;
+    TokenService tokenService;
 
+    @PostMapping("login")
+    public TokenWrapper login(@RequestBody LoginRequestDto loginRequestDto) {
+        User user = this.userService.getUserWithCredentials(loginRequestDto);
+        if (user != null) {
+            TokenWrapper tokenWrapper = new TokenWrapper();
+            String token = this.tokenService.generateToken(user);
+            tokenWrapper.setToken(token);
+            return tokenWrapper;
+        } else {
+            // Errorhandling.
+            // Either return 401 or 400
+            return null;
+        }
+    }
     @PostMapping("/authenticate")
     @Operation(
             operationId = "AuthenticateUser",

@@ -1,4 +1,4 @@
-package ch.csbe.backendlb.login;
+package ch.csbe.backendlb.User.login;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

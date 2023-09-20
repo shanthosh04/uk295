@@ -1,21 +1,23 @@
-package ch.csbe.backendlb.login;
+package ch.csbe.backendlb.User.login;
 
 import ch.csbe.backendlb.User.User;
 import ch.csbe.backendlb.User.UserService;
+import ch.csbe.backendlb.User.login.
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
 
-@Component
-    public class JwtRequestFilter extends OncePerRequestFilter {
+public class JwtRequestFilter extends OncePerRequestFilter {
 
+    @Component
     @Autowired
     private UserService userService;
 
@@ -51,4 +53,3 @@ import java.io.IOException;
         chain.doFilter(request, response);
     }
 }
-

@@ -1,6 +1,5 @@
-package ch.csbe.backendlb.login;
+package ch.csbe.backendlb.User.login;
 
-import org.springdoc.core.properties.SwaggerUiConfigProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

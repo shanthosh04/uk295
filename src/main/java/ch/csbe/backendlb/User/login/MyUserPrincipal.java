@@ -1,9 +1,7 @@
-package ch.csbe.backendlb.login;
+package ch.csbe.backendlb.User.login;
 
 import ch.csbe.backendlb.User.User;
-import ch.csbe.backendlb.resources.user.UserEntitie;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
