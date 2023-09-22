@@ -22,7 +22,7 @@ public class CategoryController {
             summary = "Kategorie erstellen",
             description = "Dieser Endpunkt ermöglicht das Erstellen einer neuen Produktkategorie."
     )
-    public Category createCategory(@RequestBody Category category) {
+    public CategoryDetailDto createCategory(@RequestBody Category category) {
         return categoryService.create(category);
     }
 

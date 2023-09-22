@@ -14,7 +14,7 @@ import java.util.List;
         description = "Identifikationsnummer der User",
         example = "1"
 )
-public class User {
+public class User extends org.springframework.security.core.userdetails.User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = ("int"),nullable = false)

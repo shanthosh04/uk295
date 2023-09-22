@@ -1,6 +1,5 @@
 package ch.csbe.backendlb.Category;
 
-import ch.csbe.backendlb.Category.DTO.CategoryCreateDto;
 import ch.csbe.backendlb.Category.DTO.CategoryDetailDto;
 import ch.csbe.backendlb.Category.DTO.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class CategoryService {
         return categoryDetailDto;
     }
 
-    public CategoryDetailDto create(CategoryCreateDto category) {
+    public CategoryDetailDto create(Category category) {
         return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category))) ;
     }
 

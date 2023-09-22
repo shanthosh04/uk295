@@ -1,6 +1,5 @@
 package ch.csbe.backendlb.Category.DTO;
 
-
 import ch.csbe.backendlb.Product.DTO.ProductShowDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
