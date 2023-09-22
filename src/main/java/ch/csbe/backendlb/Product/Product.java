@@ -1,6 +1,5 @@
 package ch.csbe.backendlb.Product;
 
-import ch.csbe.backendlb.Category.Category;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,7 +22,7 @@ public class Product {
         private String sku;
 
         @Column(columnDefinition = "TINYINT", nullable = false)
-        private Integer active;
+        private String active;
 
         @Column(columnDefinition = "varchar(500)", nullable = false)
         private String productName;
@@ -34,11 +33,11 @@ public class Product {
         @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
         private String description;
 
-        @Column(columnDefinition = "FLOAT", nullable = false)
-        private Float price;
+        @Column(columnDefinition = "DOUBLE", nullable = false)
+        private Double price;
 
         @Column(columnDefinition = "INT", nullable = false)
-        private Integer stock;
+        private String stock;
 
         @ManyToOne
         private ch.csbe.backendlb.Category.Category Category;
@@ -59,11 +58,11 @@ public class Product {
                 this.sku = sku;
         }
 
-        public Integer getActive() {
+        public String getActive() {
                 return active;
         }
 
-        public void setActive(Integer active) {
+        public void setActive(String active) {
                 this.active = active;
         }
 
@@ -91,19 +90,19 @@ public class Product {
                 this.description = description;
         }
 
-        public Float getPrice() {
+        public Double getPrice() {
                 return price;
         }
 
-        public void setPrice(Float price) {
+        public void setPrice(Double price) {
                 this.price = price;
         }
 
-        public Integer getStock() {
+        public String getStock() {
                 return stock;
         }
 
-        public void setStock(Integer stock) {
+        public void setStock(String stock) {
                 this.stock = stock;
         }
 

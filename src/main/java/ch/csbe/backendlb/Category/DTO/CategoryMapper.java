@@ -11,7 +11,7 @@ public abstract class CategoryMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "active", source = "active")
 
-    public abstract Category toEntity(CategoryCreateDto categoryCreateDto);
+    public abstract Category toEntity(Category categoryCreateDto);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")

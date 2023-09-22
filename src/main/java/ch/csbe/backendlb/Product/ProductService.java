@@ -1,5 +1,8 @@
 package ch.csbe.backendlb.Product;
 
+import ch.csbe.backendlb.Product.DTO.ProductDetailDto;
+import ch.csbe.backendlb.Product.DTO.ProductMapper;
+import ch.csbe.backendlb.Product.DTO.ProductUpdateDto;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -43,6 +46,22 @@ public class ProductService {
             return productRepository.save(existingProduct);
         }
         return new Product();
+    }
+
+    public ProductDetailDto update(Long id, ProductUpdateDto product) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        if (productOptional.isPresent()) {
+            Product existingProduct = productOptional.get();
+            existingProduct.setProductName(product.getName());
+            existingProduct.setActive(product.getActive());
+            existingProduct.setSku(product.getSku());
+            existingProduct.setImage(product.getImages());
+            existingProduct.setDescription(product.getDescription());
+            existingProduct.setPrice(product.getPrise());
+            existingProduct.setStock(product.getStock());
+            return ProductMapper.DetailDto(productRepository.save(existingProduct));
+        }
+        return new ProductDetailDto();
     }
 
     public void deleteById(Long id) {

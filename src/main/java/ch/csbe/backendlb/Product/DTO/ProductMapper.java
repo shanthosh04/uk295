@@ -36,7 +36,9 @@ public abstract class ProductMapper {
     @Mapping(target = "description", source = "description")
     @Mapping(target = "prise", source = "prise")
     @Mapping(target = "stock", source = "stock")
-    public abstract ProductDetailDto DetailDto(Product productEntitie);
+    public static ProductDetailDto DetailDto(Product productEntitie) {
+        return null;
+    }
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "sku", source = "sku")
