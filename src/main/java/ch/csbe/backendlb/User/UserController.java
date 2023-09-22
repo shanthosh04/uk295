@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/sign")
+@RequestMapping("/users")
 @Tag(name = "UserController", description = "Hier finden sich alle Endpoints für Benutzer")
 public class UserController {
 
@@ -20,20 +20,8 @@ public class UserController {
     UserService userService;
 
     @Autowired
-    TokenService tokenService;
+    UserMapper userMapper;
 
-    @PostMapping("login")
-    public TokenWrapper login(@RequestBody LoginRequestDto loginRequestDto) {
-        User user = this.userService.getUserWithCredentials(loginRequestDto);
-        if (user != null) {
-            TokenWrapper tokenWrapper = new TokenWrapper();
-            String token = this.tokenService.generateToken(user);
-            tokenWrapper.setToken(token);
-            return tokenWrapper;
-        } else {
-            return null;
-        }
-    }
     @PostMapping("/authenticate")
     @Operation(
             operationId = "AuthenticateUser",

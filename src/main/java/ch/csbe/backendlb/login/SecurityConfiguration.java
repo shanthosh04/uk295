@@ -16,22 +16,28 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http)
-    throws Exception {
+            throws Exception {
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.csrf().disable();
         http
-            .httpBasic().disable()
-            .authorizeHttpRequests((authz) -> authz.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-            .requestMatchers(HttpMethod.GET, "/demo/open").permitAll()
-            .requestMatchers("/swagger-ui/index.html").permitAll()
-            .requestMatchers("/demo/secured").hasAuthority("ROLE_ADMIN")
-            .requestMatchers("/swagger-ui/*").permitAll()
-            .requestMatchers("/v3/api-docs").permitAll()
-            .requestMatchers("/v3/api-docs/swagger-config").permitAll()
-            .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-            .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-            .anyRequest().authenticated()
-        );
+                .httpBasic().disable()
+                .authorizeHttpRequests((authz) -> authz.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/demo/open").permitAll()
+                        .requestMatchers("/swagger-ui/index.html").permitAll()
+                        .requestMatchers("/user/{id}/promote").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/swagger-ui/*").permitAll()
+                        .requestMatchers("/v3/api-docs").permitAll()
+                        .requestMatchers("/users/register").permitAll()
+                        .requestMatchers("/users/authenticate").permitAll()
+                        .requestMatchers("/products").permitAll()
+                        .requestMatchers("/products/{id}").permitAll()
+                        .requestMatchers("/productcategory/{id}").permitAll()
+                        .requestMatchers("/productcategory").permitAll()
+                        .requestMatchers("/v3/api-docs/swagger-config").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .anyRequest().authenticated()
+                );
 
         return http.build();
     }

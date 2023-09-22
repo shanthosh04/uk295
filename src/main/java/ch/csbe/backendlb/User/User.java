@@ -78,6 +78,18 @@ public class User {
     public void setEmail(String email) {
         this.Email = email;
     }
+    public String getadress() {
+        return adress;
+    }
+    public void setadress(String adress){
+        this.adress = adress;
+    }
+    public String getcity() {
+        return city;
+    }
+    public void setcity(String city){
+        this.city = city;
+    }
 
     public String getPassword() {
         return password;
