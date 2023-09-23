@@ -9,15 +9,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-@Schema (description = "DTO zum updaten einer Kategory")
+@Schema(description = "DTO for updating a Category")
+
 public class CategoryUpdateDto {
-    @Schema(description = "einmalige Id zum identifiziren einer Kategory")
+    // Unique ID for identifying a Category
+    @Schema(description = "Unique ID for identifying a Category")
     public Long id;
-    @Schema (description = "aktivitäts status einer Kategory")
-    public  String active;
-    @Schema (description = "Name einer Kategory")
+
+    // Activity status of a Category
+    @Schema(description = "Activity status of a Category")
+    public String active;
+
+    // Name of a Category
+    @Schema(description = "Name of a Category")
     public String name;
-    @Schema (description = "Produkte einer Kategory")
+
+    // Products in a Category
+    @Schema(description = "Products in a Category")
     private ProductShowDto toDos;
 }
-

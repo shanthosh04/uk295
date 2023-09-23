@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Schema (
-        description = "Identifikationsnummer der Category",
+        description = "Category identification number",
         example = "1"
 )
 public class Category {
@@ -23,6 +23,7 @@ public class Category {
     @Column (columnDefinition = "VARCHAR(255)")
     private String name;
 
+    // Getters and setters for the 'id' field
     public Long getId() {
         return id;
     }
@@ -31,14 +32,16 @@ public class Category {
         this.id = id;
     }
 
+    // Getters and setters for the 'active' field
     public String getActive() {
         return getActive();
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 
+    // Getters and setters for the 'name' field
     public String getName() {
         return name;
     }

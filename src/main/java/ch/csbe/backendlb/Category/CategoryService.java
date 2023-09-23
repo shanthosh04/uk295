@@ -14,42 +14,40 @@ public class CategoryService {
 
     @Autowired
     CategoryRepository categoryRepository;
+
     @Autowired
     CategoryMapper categoryMapper;
 
-
+    // Retrieve a list of all categories.
     public List<CategoryDetailDto> get() {
-
         return categoryRepository.findAll().stream().map(categoryMapper::toDetailDto).collect(Collectors.toList());
     }
 
+    // Retrieve a category by its unique identifier.
     public CategoryDetailDto getById(Long id) {
         Category category = this.categoryRepository.getById(id);
-
-        CategoryDetailDto categoryDetailDto = categoryMapper.toDetailDto(category);
-        return categoryDetailDto;
+        return categoryMapper.toDetailDto(category);
     }
 
+    // Create a new category.
     public CategoryDetailDto create(Category category) {
-        return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category))) ;
+        return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category)));
     }
 
+    // Update an existing category by its unique identifier.
     public CategoryDetailDto update(Long id, Category category) {
         Optional<Category> categoryOptional = categoryRepository.findById(id);
         if (categoryOptional.isPresent()) {
             Category existingCategory = categoryOptional.get();
             existingCategory.setName(category.getName());
-            existingCategory.setActive(Integer.parseInt(category.getActive()));
+            existingCategory.setActive(Integer.parseInt(category.getActive());
             return categoryMapper.toDetailDto(categoryRepository.save(existingCategory));
         }
         return new CategoryDetailDto();
     }
 
+    // Delete a category by its unique identifier.
     public void deleteById(Long id) {
         categoryRepository.deleteById(id);
-
-
     }
 }
-
-
