@@ -1,48 +1,43 @@
 package ch.csbe.backendlb.User.DTO;
 
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import java.util.Date;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Setter
+import java.util.Date;
+
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Schema(description = "DTO für das Aktualisieren eines Benutzers")
+@Setter
+@Data
+
+@Schema(description = "DTO for updating user details")
 public class UserUpdateDto {
-    @NotNull
-    @Schema(description = "Einmaliege Id des Benutzers")
-    public Long id;
-    @NotNull
-    @Schema(description = "Vorname des Benutzers")
+    // First name of the user
+    @Schema(description = "First name of the user")
     public String firstName;
-    @NotNull
-    @Schema(description = "Nachname des Benutzers")
-    public  String lastName;
-    @NotNull
-    @Schema(description = "Benutzername des Benutzers")
+
+    // Last name of the user
+    @Schema(description = "Last name of the user")
+    public String lastName;
+
+    // Username of the user
+    @Schema(description = "Username of the user")
     public String username;
-    @NotNull
-    @Schema(description = "E-Mail des Benutzers")
+
+    // Email of the user
+    @Schema(description = "Email of the user")
     public String email;
-    @NotNull
-    @Schema(description = "Password des Benutzers")
+
+    // Password of the user
+    @Schema(description = "Password of the user")
     public String password;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date birthdate;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date adress;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date city;
-    @NotNull
-    @Schema(description = "Status ob der Benutzer Authentifizirt ist")
+
+    // Birthday (age) of the user
+    @Schema(description = "Birthday of the user")
+    public Date birthday;
+
+    // Status indicating whether the user is authenticated
+    @Schema(description = "Status indicating whether the user is authenticated")
     public Boolean authenticated;
 }
-

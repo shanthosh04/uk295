@@ -3,46 +3,49 @@ package ch.csbe.backendlb.User.DTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Date;
 
-@Getter
-@Setter
 @Data
-
-@Schema(description = "DTOs für das updaten eines Benutzers")
+@Schema(description = "DTO for user details")
 public class UserDetailDto {
+    // Unique ID of the user
     @NotNull
-    @Schema(description = "Einmaliege Id des Benutzers")
-    public Long id;
-    @NotNull
-    @Schema(description = "Vorname des Benutzers")
-    public String firstName;
-    @NotNull
-    @Schema(description = "Nachname des Benutzers")
-    public  String lastName;
-    @NotNull
-    @Schema(description = "Benutzername des Benutzers")
-    public String username;
-    @NotNull
-    @Schema(description = "E-Mail des Benutzers")
-    public String email;
-    @NotNull
-    @Schema(description = "Password des Benutzers")
-    public String password;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date birthdate;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date adress;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date city;
-    @NotNull
-    @Schema(description = "Status ob der Benutzer Authentifizirt ist")
-    public Boolean authenticated;
-}
+    @Schema(description = "Unique ID of the user")
+    private Long id;
 
+    // First name of the user
+    @NotNull
+    @Schema(description = "First name of the user")
+    private String firstName;
+
+    // Last name of the user
+    @NotNull
+    @Schema(description = "Last name of the user")
+    private String lastName;
+
+    // Username of the user
+    @NotNull
+    @Schema(description = "Username of the user")
+    private String username;
+
+    // Email of the user
+    @NotNull
+    @Schema(description = "Email of the user")
+    private String email;
+
+    // Password of the user
+    @NotNull
+    @Schema(description = "Password of the user")
+    private String password;
+
+    // Birthday of the user
+    @NotNull
+    @Schema(description = "Birthday of the user")
+    private Date birthday;
+
+    // Status indicating whether the user is authenticated
+    @NotNull
+    @Schema(description = "Status indicating whether the user is authenticated")
+    private Boolean authenticated;
+}

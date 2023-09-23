@@ -34,7 +34,7 @@ public class CategoryService {
         return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category))) ;
     }
 
-    public CategoryDetailDto update(Long id) {
+    public CategoryDetailDto update(Long id, Category category) {
         Optional<Category> categoryOptional = categoryRepository.findById(id);
         if (categoryOptional.isPresent()) {
             Category existingCategory = categoryOptional.get();

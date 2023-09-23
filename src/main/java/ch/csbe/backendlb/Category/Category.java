@@ -31,8 +31,8 @@ public class Category {
         this.id = id;
     }
 
-    public int getActive() {
-        return active;
+    public String getActive() {
+        return getActive();
     }
 
     public void setActive(int active) {

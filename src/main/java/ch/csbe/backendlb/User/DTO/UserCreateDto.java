@@ -7,36 +7,45 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Schema(description = "die Erstelung eines Benutzers")
+@Schema(description = "DTO for creating a user")
 public class UserCreateDto {
+    // Unique ID of the user
     @NotNull
-    @Schema(description = "Einmaliege Id des Benutzers")
-    public Long id;
+    @Schema(description = "Unique ID of the user")
+    private Long id;
+
+    // First name of the user
     @NotNull
-    @Schema(description = "Vorname des Benutzers")
-    public String firstName;
+    @Schema(description = "First name of the user")
+    private String firstName;
+
+    // Last name of the user
     @NotNull
-    @Schema(description = "Nachname des Benutzers")
-    public  String lastName;
+    @Schema(description = "Last name of the user")
+    private String lastName;
+
+    // Username of the user
     @NotNull
-    @Schema(description = "Benutzername des Benutzers")
-    public String username;
+    @Schema(description = "Username of the user")
+    private String username;
+
+    // Email of the user
     @NotNull
-    @Schema(description = "E-Mail des Benutzers")
-    public String email;
+    @Schema(description = "Email of the user")
+    private String email;
+
+    // Password of the user
     @NotNull
-    @Schema(description = "Password des Benutzers")
-    public String password;
+    @Schema(description = "Password of the user")
+    private String password;
+
+    // Birthday (age) of the user
     @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date birthdate;
+    @Schema(description = "Birthday of the user")
+    private Date birthday;
+
+    // Status indicating whether the user is authenticated
     @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date adress;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date city;
-    @NotNull
-    @Schema(description = "Status ob der Benutzer Authentifizirt ist")
-    public Boolean authenticated;
+    @Schema(description = "Status indicating whether the user is authenticated")
+    private Boolean authenticated;
 }

@@ -1,69 +1,67 @@
 package ch.csbe.backendlb.Product;
 
+import ch.csbe.backendlb.Product.DTO.ProductCreateDto;
 import ch.csbe.backendlb.Product.DTO.ProductDetailDto;
 import ch.csbe.backendlb.Product.DTO.ProductMapper;
 import ch.csbe.backendlb.Product.DTO.ProductUpdateDto;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    @Autowired
+    ProductMapper productMapper;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    @Autowired
+    ProductRepository productRepository;
+
+    // Get product details by ID
+    public ProductDetailDto getById(Long id) {
+        Product product = this.productRepository.getById(id);
+        return productMapper.DetailDto(product);
     }
 
-    public List<Product> get() {
-        return productRepository.findAll();
+    // Get a list of all products
+    public List<ProductDetailDto> get() {
+        // Retrieve all products, map them to DTOs, and collect them into a list
+        return productRepository.findAll()
+                .stream()
+                .map(productMapper::DetailDto)
+                .collect(Collectors.toList());
     }
 
-    public Product getById(Long id) {
-        Optional<Product> productOptional = productRepository.findById(id);
-        if (productOptional.isPresent()) {
-            return productOptional.get();
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produkt mit der id " + id + " wurde nicht gefunden.");
+    // Create a new product
+    public ProductDetailDto create(ProductCreateDto product) {
+        // Map the DTO to an entity and save it, then return the corresponding DTO
+        return productMapper.DetailDto(productRepository.save(productMapper.toEntity(product)));
     }
 
-    public Product create(Product product) {
-        return productRepository.save(product);
-    }
-
-
-    public Product update(Long id, Product updatedProduct) {
-        Optional<Product> productOptional = productRepository.findById(id);
-        if (productOptional.isPresent()) {
-            Product existingProduct = productOptional.get();
-            existingProduct.setProductName(updatedProduct.getProductName());
-            existingProduct.setPrice(updatedProduct.getPrice());
-            return productRepository.save(existingProduct);
-        }
-        return new Product();
-    }
-
+    // Update an existing product by ID
     public ProductDetailDto update(Long id, ProductUpdateDto product) {
         Optional<Product> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()) {
             Product existingProduct = productOptional.get();
-            existingProduct.setProductName(product.getName());
+            // Update the fields of the existing product entity
+            existingProduct.setProductName(product.getProductName());
             existingProduct.setActive(product.getActive());
             existingProduct.setSku(product.getSku());
-            existingProduct.setImage(product.getImages());
+            existingProduct.setImage(product.getImage());
             existingProduct.setDescription(product.getDescription());
-            existingProduct.setPrice(product.getPrise());
+            existingProduct.setPrice(product.getPrice());
             existingProduct.setStock(product.getStock());
-            return ProductMapper.DetailDto(productRepository.save(existingProduct));
+            // Save the updated entity and return the corresponding DTO
+            return productMapper.DetailDto(productRepository.save(existingProduct));
         }
+        // Return an empty DTO if the product ID does not exist
         return new ProductDetailDto();
     }
 
+    // Delete a product by ID if it exists
     public void deleteById(Long id) {
         if (productRepository.existsById(id)) {
             productRepository.deleteById(id);

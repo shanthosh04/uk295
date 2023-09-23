@@ -18,13 +18,13 @@ public class ProductUpdateDto {
     @Schema (description = "aktivitäts status eines Produktes")
     public  String active;
     @Schema (description = "Name eines Produktes")
-    public String name;
+    public String productName;
     @Schema (description = "Das Bild zu einem Produkt")
-    public String images;
+    public String image;
     @Schema (description = "BEschreibung eines Produktes")
     public String description;
     @Schema (description = "Preis eines Produktes")
-    public Double prise;
+    public Double price;
     @Schema (description = "Lagerbestand eines Produktes")
     public String stock;
     @Schema (description = "Kategory eines Produktes")

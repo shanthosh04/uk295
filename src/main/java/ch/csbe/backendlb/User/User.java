@@ -1,68 +1,73 @@
 package ch.csbe.backendlb.User;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import lombok.Data;
-
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
-@Schema (
-        description = "Identifikationsnummer der User",
-        example = "1"
-)
-public class User extends org.springframework.security.core.userdetails.User {
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = ("int"),nullable = false)
+    @Column(columnDefinition = "BIGINT", nullable = false)
     private Long id;
 
-    @Column(columnDefinition = "varchar(255)")
-    private String firstname;
+    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
+    private String firstName;
 
-    @Column (columnDefinition = "varchar(255)")
-    private String lastname;
+    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
+    private String lastName;
 
-    @Column (columnDefinition = "varchar(200)")
+    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String username;
 
-    @Column (columnDefinition = "varchar(255)")
-    private String adress;
+    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
+    private String email;
 
-    @Column (columnDefinition = "varchar(255)")
-    private String city;
-
-    @Column (columnDefinition = "DATE")
-    private Date birthdate;
-
-    @Column (columnDefinition = "varchar(1000)")
-    private String Email;
-
-    @Column (columnDefinition = "varchar(200)")
+    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String password;
 
-    @Column (columnDefinition = "boolean")
+    @Column(columnDefinition = "DATE", nullable = false)
+    private Date birthdate;
+
+    @Column(columnDefinition = "BOOLEAN", nullable = false)
     private Boolean authenticated;
 
+    // Constructors, Getters, and Setters
+
+    // Constructor
+    public User() {
+    }
+
+    // Getter and Setter for 'id'
     public Long getId() {
         return id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstname = firstName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
+    // Getter and Setter for 'firstName'
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    // Getter and Setter for 'lastName'
     public String getLastName() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastname = lastName;
+        this.lastName = lastName;
     }
 
+    // Getter and Setter for 'username'
     public String getUsername() {
         return username;
     }
@@ -71,26 +76,16 @@ public class User extends org.springframework.security.core.userdetails.User {
         this.username = username;
     }
 
+    // Getter and Setter for 'email'
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        this.Email = email;
-    }
-    public String getadress() {
-        return adress;
-    }
-    public void setadress(String adress){
-        this.adress = adress;
-    }
-    public String getcity() {
-        return city;
-    }
-    public void setcity(String city){
-        this.city = city;
+        this.email = email;
     }
 
+    // Getter and Setter for 'password'
     public String getPassword() {
         return password;
     }
@@ -99,14 +94,16 @@ public class User extends org.springframework.security.core.userdetails.User {
         this.password = password;
     }
 
-    public Date getBirthday() {
+    // Getter and Setter for 'birthdate'
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate (Date birthday) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 
+    // Getter and Setter for 'authenticated'
     public Boolean getAuthenticated() {
         return authenticated;
     }
@@ -115,11 +112,12 @@ public class User extends org.springframework.security.core.userdetails.User {
         this.authenticated = authenticated;
     }
 
-
+    // Method to get roles based on 'authenticated'
     public List<String> getRoles() {
-        List<String> hardcodedRoles = new ArrayList<>();
-        hardcodedRoles.add("ROLE_ADMIN");
-        return hardcodedRoles;
+        List<String> roles = new ArrayList<>();
+        if (authenticated != null && authenticated) {
+            roles.add("ROLE_ADMIN");
+        }
+        return roles;
     }
-
 }

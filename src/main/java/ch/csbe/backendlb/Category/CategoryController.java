@@ -33,7 +33,7 @@ public class CategoryController {
             description = "Dieser Endpunkt ermöglicht das Bearbeiten einer Produktkategorie."
     )
     public CategoryDetailDto editProductCategory(@PathVariable Long id, @RequestBody Category category) {
-        return categoryService.update(id);
+        return categoryService.update(id, category);
     }
 
     @DeleteMapping("/{id}")

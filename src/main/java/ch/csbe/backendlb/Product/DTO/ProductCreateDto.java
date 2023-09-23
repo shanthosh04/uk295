@@ -19,16 +19,16 @@ public class ProductCreateDto {
     public  String active;
     @NotNull
     @Schema (description = "Name eines Produktes")
-    public String name;
+    public String productName;
     @NotNull
     @Schema (description = "Das Bild zu einem Produkt")
-    public String images;
+    public String image;
     @NotNull
     @Schema (description = "BEschreibung eines Produktes")
     public String description;
     @NotNull
     @Schema (description = "Preis eines Produktes")
-    public Double prise;
+    public Double price;
     @NotNull
     @Schema (description = "Lagerbestand eines Produktes")
     public String stock;

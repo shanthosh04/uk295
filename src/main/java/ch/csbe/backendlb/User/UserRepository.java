@@ -12,10 +12,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllToDoByLastname(String lastname);
 
 
-    @Query("SELECT u FROM User u WHERE u.lastname = ?1")
+    @Query("SELECT u FROM User u WHERE u.lastName = ?1")
     Product findProductByType(String lastname);
 
-    @Query("SELECT DISTINCT u FROM User u WHERE u.Email = :email")
+    @Query("SELECT DISTINCT u FROM User u WHERE u.email = :email")
     User findUserByEmail(@Param("email") String email);
 
     public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -28,8 +28,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
         @Modifying
         void updateProductNameById(Long id, String newName);
 
+
         @Query("DELETE FROM Product  p WHERE p.id= ?1")
         @Modifying
         Product deleteProductById(Long id);
+
     }
 }

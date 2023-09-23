@@ -7,39 +7,46 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Schema(description = "Das ansehen eines Benutzers")
+@Schema(description = "DTO for viewing user details")
 public class UserShowDto {
 
+    // Unique ID of the user
     @NotNull
-    @Schema(description = "Einmaliege Id des Benutzers")
+    @Schema(description = "Unique ID of the user")
     public Long id;
+
+    // First name of the user
     @NotNull
-    @Schema(description = "Vorname des Benutzers")
+    @Schema(description = "First name of the user")
     public String firstName;
+
+    // Last name of the user
     @NotNull
-    @Schema(description = "Nachname des Benutzers")
-    public  String lastName;
+    @Schema(description = "Last name of the user")
+    public String lastName;
+
+    // Username of the user
     @NotNull
-    @Schema(description = "Benutzername des Benutzers")
+    @Schema(description = "Username of the user")
     public String username;
+
+    // Email of the user
     @NotNull
-    @Schema(description = "E-Mail des Benutzers")
+    @Schema(description = "Email of the user")
     public String email;
+
+    // Password of the user
     @NotNull
-    @Schema(description = "Password des Benutzers")
+    @Schema(description = "Password of the user")
     public String password;
+
+    // Birthday (age) of the user
     @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date birthdate;
+    @Schema(description = "Birthday of the user")
+    public Date birthday;
+
+    // Status indicating whether the user is authenticated
     @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date adress;
-    @NotNull
-    @Schema(description = "Geburtstag(Alter) des Benutzers")
-    public Date city;
-    @NotNull
-    @Schema(description = "Status ob der Benutzer Authentifizirt ist")
+    @Schema(description = "Status indicating whether the user is authenticated")
     public Boolean authenticated;
-
-
 }
