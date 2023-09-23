@@ -11,9 +11,11 @@ import java.util.List;
 @RepositoryRestResource(exported = false)
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    // Custom query to find all products with a specific 'active' status
     @Query
-    List<Product> findAllToDoByActive(int active);
+    List<Product> findAllByActive(int active);
 
+    // Custom query to find a single product with a specific 'active' status
     @Query("SELECT p FROM Product p WHERE p.active = ?1")
-    Product findProductByType(int active);
+    Product findProductByActive(int active);
 }

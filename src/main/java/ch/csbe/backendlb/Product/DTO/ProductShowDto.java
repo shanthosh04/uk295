@@ -6,28 +6,44 @@ import lombok.Data;
 
 @Data
 public class ProductShowDto {
+
+    // Unique identifier for the product to identify it
     @NotNull
-    @Schema(description = "Einmalige ID eines Produkts zur Identifizierung")
-    public Long id;
+    @Schema(description = "Unique ID of a product for identification")
+    private Long id;
+
+    // Stock Keeping Unit (SKU) of the product
     @NotNull
-    @Schema(description = "SKU eines Produkts")
-    public String sku;
+    @Schema(description = "Product's SKU (Stock Keeping Unit)")
+    private String sku;
+
+    // Activity status of the product (e.g., "active" or "inactive")
     @NotNull
-    @Schema(description = "Aktivitätsstatus eines Produkts")
-    public String active;
+    @Schema(description = "Activity status of the product")
+    private String active;
+
+    // Name of the product
     @NotNull
-    @Schema(description = "Name eines Produkts")
-    public String productName;
+    @Schema(description = "Name of the product")
+    private String productName;
+
+    // URL or path to the product's image
     @NotNull
-    @Schema(description = "Das Bild zu einem Produkt")
-    public String image; // Corrected property name
+    @Schema(description = "URL or path to the product's image")
+    private String image;
+
+    // Description of the product
     @NotNull
-    @Schema(description = "Beschreibung eines Produkts")
-    public String description;
+    @Schema(description = "Description of the product")
+    private String description;
+
+    // Price of the product
     @NotNull
-    @Schema(description = "Preis eines Produkts")
-    public Double price; // Corrected property name
+    @Schema(description = "Price of the product")
+    private Double price;
+
+    // Available stock quantity of the product
     @NotNull
-    @Schema(description = "Lagerbestand eines Produkts")
-    public String stock;
+    @Schema(description = "Stock quantity of the product")
+    private String stock;
 }

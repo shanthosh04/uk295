@@ -2,32 +2,44 @@ package ch.csbe.backendlb.Product.DTO;
 
 import ch.csbe.backendlb.Category.DTO.CategoryShowDto;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Data
 public class ProductUpdateDto {
-    @Schema(description = "einmalige Id eines Produktes zum identifiziren")
-    public Long id;
-    @Schema (description = "sku eines Produktes")
-    public String sku;
-    @Schema (description = "aktivitäts status eines Produktes")
-    public  String active;
-    @Schema (description = "Name eines Produktes")
-    public String productName;
-    @Schema (description = "Das Bild zu einem Produkt")
-    public String image;
-    @Schema (description = "BEschreibung eines Produktes")
-    public String description;
-    @Schema (description = "Preis eines Produktes")
-    public Double price;
-    @Schema (description = "Lagerbestand eines Produktes")
-    public String stock;
-    @Schema (description = "Kategory eines Produktes")
+
+    // Unique identifier for the product to identify it
+    @Schema(description = "Unique ID of a product for identification")
+    private Long id;
+
+    // Stock Keeping Unit (SKU) of the product
+    @Schema(description = "Product's SKU (Stock Keeping Unit)")
+    private String sku;
+
+    // Activity status of the product (e.g., "active" or "inactive")
+    @Schema(description = "Activity status of the product")
+    private String active;
+
+    // Name of the product
+    @Schema(description = "Name of the product")
+    private String productName;
+
+    // URL or path to the product's image
+    @Schema(description = "Image URL or path of the product")
+    private String image;
+
+    // Description of the product
+    @Schema(description = "Description of the product")
+    private String description;
+
+    // Price of the product
+    @Schema(description = "Price of the product")
+    private Double price;
+
+    // Available stock quantity of the product
+    @Schema(description = "Stock quantity of the product")
+    private String stock;
+
+    // Category of the product
+    @Schema(description = "Category of the product")
     private CategoryShowDto toDos;
 }
-

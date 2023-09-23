@@ -8,39 +8,51 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Schema (
-        description = "Identifikationsnummer der Product",
+@Schema(
+        description = "Product identification number",
         example = "1"
 )
 public class Product {
+
+        // Unique identifier for the product
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(columnDefinition = ("int"),nullable = false)
+        @Column(columnDefinition = "BIGINT", nullable = false)
         private Long id;
 
-        @Column(columnDefinition = "varchar(100)", nullable = false)
+        // Stock Keeping Unit (SKU) of the product
+        @Column(columnDefinition = "VARCHAR(100)", nullable = false)
         private String sku;
 
+        // Status indicating whether the product is active (usually 0 or 1)
         @Column(columnDefinition = "TINYINT", nullable = false)
         private String active;
 
-        @Column(columnDefinition = "varchar(500)", nullable = false)
+        // Name of the product
+        @Column(columnDefinition = "VARCHAR(500)", nullable = false)
         private String productName;
 
-        @Column(columnDefinition = "varchar(1000)", nullable = false)
+        // URL or path to the product's image
+        @Column(columnDefinition = "VARCHAR(1000)", nullable = false)
         private String image;
 
+        // Description of the product
         @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
         private String description;
 
+        // Price of the product
         @Column(columnDefinition = "DOUBLE", nullable = false)
         private Double price;
 
+        // Available stock quantity
         @Column(columnDefinition = "INT", nullable = false)
         private String stock;
 
+        // Many-to-One relationship with product category
         @ManyToOne
-        private ch.csbe.backendlb.Category.Category Category;
+        private ch.csbe.backendlb.Category.Category category;
+
+        // Getter and setter methods for each field
 
         public Long getId() {
                 return id;
@@ -107,10 +119,11 @@ public class Product {
         }
 
         public ch.csbe.backendlb.Category.Category getCategory() {
-                return Category;
+                return category;
         }
 
         public void setCategory(ch.csbe.backendlb.Category.Category category) {
-                Category = category;
+                this.category = category;
         }
 }
+

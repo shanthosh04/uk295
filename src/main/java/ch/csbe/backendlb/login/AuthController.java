@@ -36,6 +36,6 @@ public class AuthController {
     @PostMapping("register")
     public UserShowDto register(@RequestBody UserCreateDto userCreateDto) {
 
-        return userService.register(userCreateDto);
+        return userService.registerUser(userCreateDto);
     }
 }
