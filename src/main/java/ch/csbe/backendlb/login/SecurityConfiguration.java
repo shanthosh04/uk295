@@ -15,13 +15,15 @@ public class SecurityConfiguration {
     private JwtRequestFilter jwtRequestFilter;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // Add JWT filter before the UsernamePasswordAuthenticationFilter
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.csrf().disable();
         http
                 .httpBasic().disable()
-                .authorizeHttpRequests((authz) -> authz.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .authorizeHttpRequests((authz) -> authz
+                        // Define authorization rules for different endpoints
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/demo/open").permitAll()
                         .requestMatchers("/swagger-ui/index.html").permitAll()
                         .requestMatchers("/user/{id}/promote").hasAuthority("ROLE_ADMIN")
@@ -41,6 +43,4 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-
 }
-

@@ -18,7 +18,6 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-
     @Autowired
     private UserService userService;
 
@@ -30,7 +29,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain chain
     ) throws ServletException, IOException {
-        // Schritt 2
+        // Step 2: Extract JWT token from the Authorization header
         final String authorizationHeader = request.getHeader("Authorization");
 
         String email = null;
@@ -41,13 +40,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             email = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(jwt).getBody().getSubject();
         }
 
-        // Schritt 3
+        // Step 3: Check if the email is valid and there's no existing authentication
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             User user = userService.findUserByEmail(email);
             MyUserPrincipal userPrincipal = new MyUserPrincipal(user);
             userPrincipal.setEmail(user.getEmail());
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userPrincipal, null, userPrincipal.getAuthorities());
-            // Schritt 4
+            // Step 4: Set the authentication in the SecurityContextHolder
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
 

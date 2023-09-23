@@ -10,6 +10,8 @@ import java.util.Date;
 @Service
 public class TokenService {
     private final String SECRET_KEY = "yourSecretKey";
+
+    // Generate a JWT token for the given user
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getEmail())
@@ -19,5 +21,3 @@ public class TokenService {
                 .compact();
     }
 }
-
-
